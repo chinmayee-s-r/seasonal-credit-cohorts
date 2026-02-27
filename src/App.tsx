@@ -22,6 +22,7 @@ import TechArchitecture from "./pages/TechArchitecture";
 import BusinessModel from "./pages/BusinessModel";
 import CohortCreditDashboard from "./pages/CohortCreditDashboard";
 import SMECreditProfile from "./pages/SMECreditProfile";
+import PartnerPortfolio from "./pages/PartnerPortfolio";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -48,6 +49,7 @@ const App = () => (
             <Route path="/partner/cohorts" element={<CohortsToBid />} />
             <Route path="/partner/cohorts/delhi-festive-2026" element={<CohortCreditDashboard />} />
             <Route path="/partner/cohorts/delhi-festive-2026/sme/rajesh" element={<SMECreditProfile />} />
+            <Route path="/partner/portfolio" element={<PartnerPortfolio />} />
             <Route path="/partner/bids" element={<MyBids />} />
             <Route path="/analytics" element={<AnalyticsPage />} />
             <Route path="/how-it-works" element={<TechArchitecture />} />
