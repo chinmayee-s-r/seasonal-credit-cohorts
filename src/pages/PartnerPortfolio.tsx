@@ -12,16 +12,16 @@ const kpiCards = [
   { label: "Total Active Exposure", value: "₹8.7 Cr", icon: TrendingUp },
   { label: "Active SMEs", value: "34", icon: Users },
   { label: "Active Cohorts", value: "4", icon: Layers },
-  { label: "Weighted Avg Yield", value: "15.2%", icon: Percent },
+  { label: "Weighted Avg Yield", value: "15.0%", icon: Percent },
   { label: "Weighted Risk Score", value: "74", icon: ShieldCheck },
   { label: "Portfolio IRR (Projected)", value: "16.8%", icon: Target },
 ];
 
 const cohortExposure = [
-  { name: "Delhi Festive Retail 2026", year: "2026", committed: "₹3.5 Cr", deployed: "₹3.1 Cr", outstanding: "₹2.8 Cr", yield: "15.4%", delinquency: "2.1%" },
-  { name: "Mumbai Wedding Supply 2025", year: "2025", committed: "₹2.8 Cr", deployed: "₹2.6 Cr", outstanding: "₹1.4 Cr", yield: "14.8%", delinquency: "3.2%" },
-  { name: "Jaipur Tourism Retail 2025", year: "2025", committed: "₹1.5 Cr", deployed: "₹1.3 Cr", outstanding: "₹0.6 Cr", yield: "15.1%", delinquency: "1.8%" },
-  { name: "Chennai Harvest Agri 2024", year: "2024", committed: "₹2.2 Cr", deployed: "₹2.0 Cr", outstanding: "₹0.2 Cr", yield: "14.5%", delinquency: "4.1%" },
+  { name: "Delhi Festive Retail Cohort 2026", year: "2026", committed: "₹3.5 Cr", deployed: "₹3.1 Cr", outstanding: "₹2.8 Cr", yield: "15.4%", delinquency: "2.1%" },
+  { name: "Mumbai Wedding Supply Cohort 2025", year: "2025", committed: "₹2.8 Cr", deployed: "₹2.6 Cr", outstanding: "₹1.4 Cr", yield: "14.8%", delinquency: "3.2%" },
+  { name: "Jaipur Tourism Retail Cohort 2025", year: "2025", committed: "₹1.5 Cr", deployed: "₹1.3 Cr", outstanding: "₹0.6 Cr", yield: "15.1%", delinquency: "1.8%" },
+  { name: "Chennai Harvest Agri Cohort 2024", year: "2024", committed: "₹2.2 Cr", deployed: "₹2.0 Cr", outstanding: "₹0.2 Cr", yield: "14.5%", delinquency: "4.1%" },
 ];
 
 const riskPieData = [
@@ -35,10 +35,10 @@ const capitalAllocation = [
 ];
 
 const vintageData = [
-  { name: "Delhi Festive Retail 2026", year: "2026", deployed: "₹3.1 Cr", onTime: "94%", dpd30: "4.2%", dpd60: "1.5%", lossRate: "0.3%" },
-  { name: "Mumbai Wedding Supply 2025", year: "2025", deployed: "₹2.6 Cr", onTime: "91%", dpd30: "5.8%", dpd60: "2.4%", lossRate: "0.8%" },
-  { name: "Jaipur Tourism Retail 2025", year: "2025", deployed: "₹1.3 Cr", onTime: "96%", dpd30: "2.8%", dpd60: "0.9%", lossRate: "0.1%" },
-  { name: "Chennai Harvest Agri 2024", year: "2024", deployed: "₹2.0 Cr", onTime: "88%", dpd30: "7.1%", dpd60: "3.5%", lossRate: "1.4%" },
+  { name: "Delhi Festive Retail Cohort 2026", year: "2026", deployed: "₹3.1 Cr", onTime: "94%", dpd30: "4.2%", dpd60: "1.5%", lossRate: "0.3%" },
+  { name: "Mumbai Wedding Supply Cohort 2025", year: "2025", deployed: "₹2.6 Cr", onTime: "91%", dpd30: "5.8%", dpd60: "2.4%", lossRate: "0.8%" },
+  { name: "Jaipur Tourism Retail Cohort 2025", year: "2025", deployed: "₹1.3 Cr", onTime: "96%", dpd30: "2.8%", dpd60: "0.9%", lossRate: "0.1%" },
+  { name: "Chennai Harvest Agri Cohort 2024", year: "2024", deployed: "₹2.0 Cr", onTime: "88%", dpd30: "7.1%", dpd60: "3.5%", lossRate: "1.4%" },
 ];
 
 const repaymentTrend = [

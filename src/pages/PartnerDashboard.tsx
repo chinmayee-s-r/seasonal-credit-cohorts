@@ -3,9 +3,10 @@ import Footer from "@/components/Footer";
 import { TrendingUp, Users, IndianRupee, BarChart3, Calendar, Shield, Activity } from "lucide-react";
 
 const cohorts = [
-  { name: "Delhi Festive Retail 2026", demand: "₹5 Cr", tickets: "₹50L avg", risk: "Low-Medium", irr: "16.2%", status: "Open" },
-  { name: "Mumbai Wedding Season 2026", demand: "₹8 Cr", tickets: "₹57L avg", risk: "Medium", irr: "17.1%", status: "Open" },
-  { name: "Jaipur Tourism 2026", demand: "₹3.5 Cr", tickets: "₹32L avg", risk: "Low", irr: "15.8%", status: "Closing Soon" },
+  { name: "Delhi Festive Retail Cohort 2026", demand: "₹5.2 Cr", tickets: "₹52L avg", risk: "Low-Medium", irr: "16.2%", status: "Open" },
+  { name: "Mumbai Wedding Supply Cohort 2025", demand: "₹2.8 Cr", tickets: "₹48L avg", risk: "Medium", irr: "15.8%", status: "Open" },
+  { name: "Jaipur Tourism Retail Cohort 2025", demand: "₹1.5 Cr", tickets: "₹38L avg", risk: "Low", irr: "15.1%", status: "Closing Soon" },
+  { name: "Chennai Harvest Agri Cohort 2024", demand: "₹2.2 Cr", tickets: "₹44L avg", risk: "Medium", irr: "14.5%", status: "Closed" },
 ];
 
 const heatmapData = [
@@ -28,10 +29,10 @@ const PartnerDashboard = () => {
         {/* Overview Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
-            { label: "Active Cohorts", value: "3", icon: Users },
-            { label: "Total Demand", value: "₹16.5 Cr", icon: IndianRupee },
+            { label: "Active Cohorts", value: "4", icon: Users },
+            { label: "Total Demand", value: "₹11.7 Cr", icon: IndianRupee },
             { label: "Avg Ticket", value: "₹46L", icon: BarChart3 },
-            { label: "Expected IRR", value: "16.4%", icon: TrendingUp },
+            { label: "Expected IRR", value: "15.4%", icon: TrendingUp },
           ].map((stat) => (
             <div key={stat.label} className="card-institutional">
               <stat.icon className="w-4 h-4 text-muted-foreground mb-2" />
