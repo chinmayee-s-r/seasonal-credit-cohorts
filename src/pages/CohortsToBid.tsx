@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import { Users, TrendingUp, Shield, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const openCohorts = [
   {
@@ -37,6 +38,7 @@ const openCohorts = [
 ];
 
 const CohortsToBid = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -46,7 +48,8 @@ const CohortsToBid = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {openCohorts.map((cohort) => (
-            <div key={cohort.name} className="card-elevated hover:border-primary/20 transition-all">
+            <div key={cohort.name} className="card-elevated hover:border-primary/20 transition-all cursor-pointer"
+              onClick={() => cohort.name === "Delhi Festive Retail Cohort 2026" && navigate("/partner/cohorts/delhi-festive-2026")}>
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <h3 className="text-base font-display font-bold text-foreground mb-1">{cohort.name}</h3>
