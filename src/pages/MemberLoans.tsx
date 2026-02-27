@@ -4,22 +4,22 @@ import { IndianRupee, CheckCircle2, Clock, Calendar } from "lucide-react";
 const activeLoans = [
   {
     id: "LN-2026-001",
-    amount: "₹18,00,000",
-    lender: "Finova Capital",
+    amount: "₹52,00,000",
+    lender: "Seasonal Capital NBFC",
     status: "Disbursed",
     disbursedDate: "15 Jan 2026",
-    nextEMI: "₹1,62,000 on 15 Mar 2026",
-    remaining: "₹14,40,000",
+    nextEMI: "₹3,12,000 on 15 Mar 2026",
+    remaining: "₹46,80,000",
   },
 ];
 
 const repaymentSchedule = [
-  { month: "Mar 2026", amount: "₹1,62,000", status: "Upcoming" },
-  { month: "Apr 2026", amount: "₹1,62,000", status: "Upcoming" },
-  { month: "May 2026", amount: "₹90,000", status: "Upcoming" },
-  { month: "Jun 2026", amount: "₹90,000", status: "Upcoming" },
-  { month: "Jul 2026", amount: "₹1,62,000", status: "Upcoming" },
-  { month: "Aug 2026", amount: "₹1,62,000", status: "Upcoming" },
+  { month: "Mar 2026", amount: "₹3,12,000", status: "Upcoming" },
+  { month: "Apr 2026", amount: "₹3,12,000", status: "Upcoming" },
+  { month: "May 2026", amount: "₹1,56,000", status: "Upcoming" },
+  { month: "Jun 2026", amount: "₹1,56,000", status: "Upcoming" },
+  { month: "Jul 2026", amount: "₹3,12,000", status: "Upcoming" },
+  { month: "Aug 2026", amount: "₹3,12,000", status: "Upcoming" },
 ];
 
 const MemberLoans = () => {

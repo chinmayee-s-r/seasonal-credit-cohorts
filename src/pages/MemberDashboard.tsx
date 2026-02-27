@@ -60,7 +60,7 @@ const MemberDashboard = () => {
               <span className="badge-status bg-success/10 text-success text-[10px] font-semibold mb-3 inline-block">Recommended Cohort</span>
               <h3 className="text-xl font-display font-bold text-foreground mb-1">Delhi Festive Retail Cohort 2026</h3>
               <p className="text-sm text-muted-foreground max-w-md">
-                Matches your seasonal cycle and loan requirement. 9 of 12 members joined.
+                Matches your seasonal cycle and loan requirement. 8 of 10 members joined.
               </p>
             </div>
             <Link
@@ -76,8 +76,8 @@ const MemberDashboard = () => {
         {/* Quick Links */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
           <Link to="/offers" className="card-institutional hover:border-primary/20 transition-all group">
-            <h4 className="font-semibold text-foreground text-sm mb-1">Lender Offers</h4>
-            <p className="text-xs text-muted-foreground">View available offers</p>
+            <h4 className="font-semibold text-foreground text-sm mb-1">Approved Offers</h4>
+            <p className="text-xs text-muted-foreground">View approved loan offers</p>
           </Link>
           <Link to="/emi-simulator" className="card-institutional hover:border-primary/20 transition-all group">
             <h4 className="font-semibold text-foreground text-sm mb-1">EMI Simulator</h4>
