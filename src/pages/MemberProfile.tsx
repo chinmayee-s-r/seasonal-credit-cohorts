@@ -39,9 +39,9 @@ const MemberProfile = () => {
             {[
               { label: "Business Name", value: "Rajesh Light House Traders" },
               { label: "Email", value: email || "business@example.com" },
-              { label: "Industry", value: "Festive Retail & Lighting" },
+              { label: "Industry", value: "Decorative Lighting" },
               { label: "Location", value: "Chandni Chowk, Delhi" },
-              { label: "Annual Revenue", value: "₹1.2 Cr" },
+              { label: "Annual Revenue", value: "₹1.1 Cr" },
               { label: "Years in Operation", value: "8 years" },
             ].map((item) => (
               <div key={item.label}>
@@ -64,10 +64,10 @@ const MemberProfile = () => {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <div className="text-3xl font-display font-bold text-foreground">78%</div>
+            <div className="text-3xl font-display font-bold text-foreground">85%</div>
             <div className="flex-1">
               <div className="w-full bg-secondary rounded-full h-2.5">
-                <div className="bg-success h-2.5 rounded-full" style={{ width: "78%" }} />
+                <div className="bg-success h-2.5 rounded-full" style={{ width: "85%" }} />
               </div>
             </div>
           </div>
