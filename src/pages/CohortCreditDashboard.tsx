@@ -252,7 +252,51 @@ const CohortCreditDashboard = () => {
           </div>
         </Section>
 
-        {/* SECTION 5 — Recommended Lending Structure */}
+        {/* SECTION 5 — SME List (moved above Recommended Lending Structure) */}
+        <Section title="SME Drill-Down">
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 px-3 text-xs font-semibold text-muted-foreground">SME Name</th>
+                  <th className="text-left py-2 px-3 text-xs font-semibold text-muted-foreground">Ticket Size</th>
+                  <th className="text-left py-2 px-3 text-xs font-semibold text-muted-foreground">Risk Band</th>
+                  <th className="text-left py-2 px-3 text-xs font-semibold text-muted-foreground">Seasonality</th>
+                  <th className="text-left py-2 px-3 text-xs font-semibold text-muted-foreground">Compliance</th>
+                  <th className="text-right py-2 px-3 text-xs font-semibold text-muted-foreground"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {smeList.map((sme, i) => (
+                  <tr key={i} className="border-b border-border/50 hover:bg-secondary/30 transition-colors">
+                    <td className="py-3 px-3 font-medium text-foreground">{sme.name}</td>
+                    <td className="py-3 px-3 text-muted-foreground">{sme.ticket}</td>
+                    <td className="py-3 px-3">
+                      <span className={`badge-status text-[10px] font-semibold ${
+                        sme.risk === "A" ? "bg-success/10 text-success" :
+                        sme.risk === "C" ? "bg-destructive/10 text-destructive" :
+                        "bg-primary/10 text-primary"
+                      }`}>{sme.risk}</span>
+                    </td>
+                    <td className="py-3 px-3 text-muted-foreground">{sme.seasonality}/100</td>
+                    <td className="py-3 px-3 text-muted-foreground">{sme.compliance}%</td>
+                    <td className="py-3 px-3 text-right">
+                      {sme.name === "Rajesh Light House Traders" ? (
+                        <Link to="/partner/cohorts/delhi-festive-2026/sme/rajesh" className="text-xs font-semibold text-primary hover:underline">
+                          View Profile →
+                        </Link>
+                      ) : (
+                        <span className="text-xs text-muted-foreground">View Profile →</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Section>
+
+        {/* SECTION 6 — Recommended Lending Structure */}
         <Section title="Recommended Lending Structure">
           <div className="space-y-2 mb-5">
             {repaymentTimeline.map((p) => (
@@ -381,52 +425,15 @@ const CohortCreditDashboard = () => {
               <StatBlock label="Weighted Yield" value={`${weightedYield}%`} />
               <StatBlock label="Expected IRR" value={`${expectedIRR}%`} />
             </div>
+
+            <div className="flex justify-end mt-4">
+              <button onClick={() => window.location.href = "/partner/bids"}
+                className="border border-border text-foreground px-5 py-2 rounded-lg text-sm font-medium hover:bg-secondary transition-colors">
+                Close
+              </button>
+            </div>
           </Section>
         )}
-
-        {/* SECTION 6 — SME List */}
-        <Section title="SME Drill-Down">
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 px-3 text-xs font-semibold text-muted-foreground">SME Name</th>
-                  <th className="text-left py-2 px-3 text-xs font-semibold text-muted-foreground">Ticket Size</th>
-                  <th className="text-left py-2 px-3 text-xs font-semibold text-muted-foreground">Risk Band</th>
-                  <th className="text-left py-2 px-3 text-xs font-semibold text-muted-foreground">Seasonality</th>
-                  <th className="text-left py-2 px-3 text-xs font-semibold text-muted-foreground">Compliance</th>
-                  <th className="text-right py-2 px-3 text-xs font-semibold text-muted-foreground"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {smeList.map((sme, i) => (
-                  <tr key={i} className="border-b border-border/50 hover:bg-secondary/30 transition-colors">
-                    <td className="py-3 px-3 font-medium text-foreground">{sme.name}</td>
-                    <td className="py-3 px-3 text-muted-foreground">{sme.ticket}</td>
-                    <td className="py-3 px-3">
-                      <span className={`badge-status text-[10px] font-semibold ${
-                        sme.risk === "A" ? "bg-success/10 text-success" :
-                        sme.risk === "C" ? "bg-destructive/10 text-destructive" :
-                        "bg-primary/10 text-primary"
-                      }`}>{sme.risk}</span>
-                    </td>
-                    <td className="py-3 px-3 text-muted-foreground">{sme.seasonality}/100</td>
-                    <td className="py-3 px-3 text-muted-foreground">{sme.compliance}%</td>
-                    <td className="py-3 px-3 text-right">
-                      {sme.name === "Rajesh Light House Traders" ? (
-                        <Link to="/partner/cohorts/delhi-festive-2026/sme/rajesh" className="text-xs font-semibold text-primary hover:underline">
-                          View Profile →
-                        </Link>
-                      ) : (
-                        <span className="text-xs text-muted-foreground">View Profile →</span>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Section>
       </div>
     </div>
   );
