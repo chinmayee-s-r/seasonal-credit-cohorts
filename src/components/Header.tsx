@@ -41,12 +41,12 @@ const Header = () => {
 
           {isLoggedIn && role === "member" && (
             <>
-              <Link to="/member/dashboard" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Dashboard</Link>
+              <Link to="/member/profile" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Profile</Link>
               <Link to="/member/analytics" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Analytics</Link>
+              <Link to="/member/dashboard" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Dashboard</Link>
               <Link to="/cohorts" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Cohorts</Link>
               <Link to="/offers" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Approved Offers</Link>
               <Link to="/member/loans" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Loans</Link>
-              <Link to="/member/profile" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Profile</Link>
             </>
           )}
 
