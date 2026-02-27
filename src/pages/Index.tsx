@@ -38,38 +38,21 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="section-container pt-20 pb-24">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-muted-foreground text-xs font-medium mb-6">
-            <TrendingUp className="w-3.5 h-3.5" />
-            Seasonal Working Capital Platform
-          </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1] mb-6">
+      <section className="section-container pt-10 pb-16">
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1] mb-4">
             Be ready for the busy season without cash pressure.
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Get working capital before demand rises and repay when business is strong. Built for India's seasonal SMEs.
+            Get working capital before demand rises and repay when business is strong.
+          </p>
+          <p className="text-base text-muted-foreground/80 font-normal max-w-2xl mx-auto mt-1.5">
+            Built for India's seasonal SMEs.
           </p>
         </div>
 
-        {/* 3-Step Explainer */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20 max-w-5xl mx-auto">
-          {steps.map((step) => (
-            <div key={step.number} className="card-institutional group hover:border-primary/20 transition-all duration-300">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-primary/5 transition-colors">
-                  <step.icon className="w-5 h-5 text-primary" />
-                </div>
-                <span className="text-xs font-semibold text-muted-foreground font-display">{step.number}</span>
-              </div>
-              <h3 className="font-display font-semibold text-foreground mb-2">{step.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
-            </div>
-          ))}
-        </div>
-
         {/* CTA Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-14">
           <Link
             to="/auth?role=member"
             className="card-prominent group hover:border-primary/20 transition-all duration-300 relative"
@@ -106,6 +89,22 @@ const Index = () => {
               <ArrowRight className="w-4 h-4" />
             </div>
           </Link>
+        </div>
+
+        {/* 3-Step Explainer */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {steps.map((step) => (
+            <div key={step.number} className="card-institutional group hover:border-primary/20 transition-all duration-300">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-primary/5 transition-colors">
+                  <step.icon className="w-5 h-5 text-primary" />
+                </div>
+                <span className="text-xs font-semibold text-muted-foreground font-display">{step.number}</span>
+              </div>
+              <h3 className="font-display font-semibold text-foreground mb-2">{step.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+            </div>
+          ))}
         </div>
       </section>
 
