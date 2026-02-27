@@ -54,6 +54,7 @@ const Header = () => {
             <>
               <Link to="/partner/dashboard" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Partner Dashboard</Link>
               <Link to="/partner/cohorts" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Cohorts to Bid</Link>
+              <Link to="/partner/portfolio" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Portfolio</Link>
               <Link to="/partner/bids" className="text-sm text-muted-foreground hover:text-foreground transition-colors">My Bids</Link>
             </>
           )}
