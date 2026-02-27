@@ -2,10 +2,12 @@ import { useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { ArrowRight, Building2, TrendingUp } from "lucide-react";
 import Header from "@/components/Header";
+import { useAuth } from "@/contexts/AuthContext";
 
 const AuthPage = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { login } = useAuth();
   const initialRole = searchParams.get("role") || "member";
   const [role, setRole] = useState<"member" | "partner">(initialRole as "member" | "partner");
   const [email, setEmail] = useState("");
@@ -13,8 +15,9 @@ const AuthPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    login(role, email || (role === "member" ? "member@demo.com" : "partner@demo.com"));
     if (role === "member") {
-      navigate("/member/onboarding");
+      navigate("/member/dashboard");
     } else {
       navigate("/partner/dashboard");
     }
