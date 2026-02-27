@@ -88,31 +88,12 @@ const PartnerDashboard = () => {
           </div>
         </div>
 
-        {/* Bidding Section */}
-        <div className="card-prominent">
-          <h3 className="font-display font-semibold text-foreground mb-4">Place a Bid</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">Interest Rate</label>
-              <input defaultValue="14.5%" className="w-full px-4 py-2.5 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all" />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">Repayment Structure</label>
-              <select className="w-full px-4 py-2.5 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all">
-                <option>Moratorium + Step-up</option>
-                <option>Revenue-linked</option>
-                <option>Standard EMI</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">Min GST Compliance</label>
-              <input defaultValue="85%" className="w-full px-4 py-2.5 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all" />
-            </div>
-          </div>
-          <button className="mt-4 bg-primary text-primary-foreground px-6 py-2.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
-            Submit Bid
-          </button>
-        </div>
+        <button
+          onClick={() => window.location.href = "/partner/cohorts"}
+          className="bg-primary text-primary-foreground px-6 py-2.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity"
+        >
+          View Cohorts
+        </button>
       </div>
       <Footer />
     </div>
