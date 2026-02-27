@@ -17,6 +17,7 @@ import PartnerDashboard from "./pages/PartnerDashboard";
 import CohortsToBid from "./pages/CohortsToBid";
 import MyBids from "./pages/MyBids";
 import AnalyticsPage from "./pages/AnalyticsPage";
+import MemberAnalytics from "./pages/MemberAnalytics";
 import TechArchitecture from "./pages/TechArchitecture";
 import BusinessModel from "./pages/BusinessModel";
 import NotFound from "./pages/NotFound";
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="/member/dashboard" element={<MemberDashboard />} />
             <Route path="/member/loans" element={<MemberLoans />} />
             <Route path="/member/profile" element={<MemberProfile />} />
+            <Route path="/member/analytics" element={<MemberAnalytics />} />
             <Route path="/cohorts" element={<CohortDiscovery />} />
             <Route path="/offers" element={<LenderOffers />} />
             <Route path="/emi-simulator" element={<EMISimulator />} />
