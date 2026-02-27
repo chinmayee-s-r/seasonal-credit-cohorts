@@ -11,8 +11,8 @@ const revenueStreams = [
   },
   {
     icon: BarChart3,
-    title: "Premium Analytics Subscription",
-    description: "Subscription tier for lenders providing advanced cohort performance data, risk insights, and seasonal heatmaps.",
+    title: "Member Subscription",
+    description: "Subscription tier for borrowers to build standardized financial documentation, provide business analytics and visibility to top tier lenders.",
     tag: "Recurring Revenue",
   },
   {
@@ -20,12 +20,6 @@ const revenueStreams = [
     title: "Cohort Creation Fee",
     description: "Fee for trade associations and industry bodies to create custom cohorts for their member base.",
     tag: "B2B Revenue",
-  },
-  {
-    icon: Shield,
-    title: "Embedded Insurance Revenue",
-    description: "Optional credit protection and seasonal business insurance bundled with loan products.",
-    tag: "Ancillary Revenue",
   },
 ];
 
