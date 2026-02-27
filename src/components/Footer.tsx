@@ -13,7 +13,7 @@ const Footer = () => {
               <span className="font-display font-bold text-xl">clustr</span>
             </div>
             <p className="text-primary-foreground/70 text-sm max-w-md leading-relaxed">
-              CLUSTERING enables structured seasonal lending without joint liability. Prepare for the season. Pay when you sell.
+              Clustr enables structured seasonal lending without joint liability. Prepare for the season. Pay when you sell.
             </p>
           </div>
           <div>
