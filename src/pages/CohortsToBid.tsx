@@ -5,32 +5,32 @@ import { useNavigate } from "react-router-dom";
 const openCohorts = [
   {
     name: "Delhi Festive Retail Cohort 2026",
-    members: 12,
-    capitalPool: "₹2.4 Cr",
-    seasonalityIndex: "High (2.9x)",
-    complianceScore: "82%",
+    members: 10,
+    capitalPool: "₹5.2 Cr",
+    seasonalityIndex: "High (2.6x)",
+    complianceScore: "88%",
     region: "Delhi NCR",
   },
   {
-    name: "Mumbai Wedding Season Cohort",
+    name: "Mumbai Wedding Supply Cohort 2025",
     members: 8,
-    capitalPool: "₹1.8 Cr",
+    capitalPool: "₹2.8 Cr",
     seasonalityIndex: "Medium (2.1x)",
     complianceScore: "76%",
     region: "Mumbai",
   },
   {
-    name: "Jaipur Textile Export Cohort",
+    name: "Jaipur Tourism Retail Cohort 2025",
     members: 15,
-    capitalPool: "₹3.6 Cr",
+    capitalPool: "₹1.5 Cr",
     seasonalityIndex: "High (3.2x)",
-    complianceScore: "88%",
+    complianceScore: "82%",
     region: "Rajasthan",
   },
   {
-    name: "South India Harvest Finance Cohort",
+    name: "Chennai Harvest Agri Cohort 2024",
     members: 10,
-    capitalPool: "₹2.0 Cr",
+    capitalPool: "₹2.2 Cr",
     seasonalityIndex: "Medium (1.8x)",
     complianceScore: "71%",
     region: "Tamil Nadu",
@@ -88,7 +88,7 @@ const CohortsToBid = () => {
                 </div>
               </div>
               <button className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground py-2.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
-                Place Bid
+                View Cohort
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
