@@ -57,9 +57,6 @@ const Index = () => {
             to="/auth?role=member"
             className="card-prominent group hover:border-primary/20 transition-all duration-300 relative"
           >
-            <div className="absolute top-4 right-4">
-              <span className="badge-status bg-accent/10 text-accent-foreground text-[10px] font-semibold">Recommended</span>
-            </div>
             <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center mb-5">
               <Building2 className="w-6 h-6 text-primary" />
             </div>
