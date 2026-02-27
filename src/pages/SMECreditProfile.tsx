@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import {
   BarChart, Bar, LineChart, Line, PieChart, Pie, Cell,
@@ -67,6 +68,7 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 );
 
 const SMECreditProfile = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -220,6 +222,12 @@ const SMECreditProfile = () => {
             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-warning" />Moderate liquidity stress</li>
             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-success" />Strong inventory-revenue linkage</li>
           </ul>
+          <div className="flex justify-end mt-4">
+            <button onClick={() => navigate(-1)}
+              className="border border-border text-foreground px-5 py-2 rounded-lg text-sm font-medium hover:bg-secondary transition-colors">
+              ← Back
+            </button>
+          </div>
         </Section>
 
         {/* Confidentiality Notice */}
