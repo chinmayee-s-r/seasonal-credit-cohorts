@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import { Link } from "react-router-dom";
 import {
@@ -91,6 +92,46 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 );
 
 const CohortCreditDashboard = () => {
+  const [capitalCommitment, setCapitalCommitment] = useState("3.5");
+  const [bandARate, setBandARate] = useState("13.5");
+  const [bandBRate, setBandBRate] = useState("15.0");
+  const [bandCRate, setBandCRate] = useState("17.0");
+  const [repaymentStructure, setRepaymentStructure] = useState("step-up");
+  const [minDSCR, setMinDSCR] = useState("1.2");
+  const [minStability, setMinStability] = useState("65");
+  const [minCompliance, setMinCompliance] = useState("70");
+  const [bidSubmitted, setBidSubmitted] = useState(false);
+
+  // Allocation engine simulation
+  const commitment = parseFloat(capitalCommitment || "0") * 100; // in lakhs
+  const eligibleSMEs = smeList.filter(
+    (s) => s.compliance >= parseFloat(minCompliance || "0") && s.seasonality >= parseFloat(minStability || "0")
+  );
+  const totalDemand = eligibleSMEs.reduce((sum, s) => sum + parseFloat(s.ticket.replace(/[₹L]/g, "")), 0);
+  const fundedSMEs = [];
+  let remaining = commitment;
+  // Priority: A > B+/B > C
+  const bandOrder = ["A", "B+", "B", "C"];
+  for (const band of bandOrder) {
+    for (const sme of eligibleSMEs) {
+      if (sme.risk !== band) continue;
+      const ticket = parseFloat(sme.ticket.replace(/[₹L]/g, ""));
+      if (remaining >= ticket) {
+        fundedSMEs.push(sme);
+        remaining -= ticket;
+      }
+    }
+  }
+  const allocated = commitment - remaining;
+  const weightedYield = fundedSMEs.length > 0
+    ? (fundedSMEs.reduce((s, sme) => {
+        const ticket = parseFloat(sme.ticket.replace(/[₹L]/g, ""));
+        const rate = sme.risk === "A" ? parseFloat(bandARate) : sme.risk === "C" ? parseFloat(bandCRate) : parseFloat(bandBRate);
+        return s + ticket * rate;
+      }, 0) / allocated).toFixed(1)
+    : "0";
+  const expectedIRR = (parseFloat(weightedYield) * 0.85).toFixed(1);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -233,6 +274,115 @@ const CohortCreditDashboard = () => {
           </div>
           <p className="text-xs text-muted-foreground">Estimated Default Reduction: <strong className="text-foreground">22–28%</strong></p>
         </Section>
+
+        {/* COHORT BID PANEL */}
+        <Section title="Cohort Capital Commitment">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">Total Capital Commitment (₹ Cr)</label>
+                <input type="number" step="0.1" value={capitalCommitment} onChange={(e) => { setCapitalCommitment(e.target.value); setBidSubmitted(false); }}
+                  className="w-full h-9 rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" />
+              </div>
+
+              <div>
+                <label className="text-xs text-muted-foreground block mb-2">Risk Band Pricing Grid</label>
+                <div className="space-y-2">
+                  {[
+                    { label: "Band A", value: bandARate, setter: setBandARate },
+                    { label: "Band B / B+", value: bandBRate, setter: setBandBRate },
+                    { label: "Band C", value: bandCRate, setter: setBandCRate },
+                  ].map((b) => (
+                    <div key={b.label} className="flex items-center gap-3">
+                      <span className="text-xs text-foreground w-20 shrink-0">{b.label}</span>
+                      <input type="number" step="0.1" value={b.value} onChange={(e) => { b.setter(e.target.value); setBidSubmitted(false); }}
+                        className="flex-1 h-9 rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" />
+                      <span className="text-xs text-muted-foreground">%</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-[10px] text-muted-foreground mt-1">Pricing applies automatically based on SME risk classification.</p>
+              </div>
+
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">Repayment Structure Template</label>
+                <select value={repaymentStructure} onChange={(e) => { setRepaymentStructure(e.target.value); setBidSubmitted(false); }}
+                  className="w-full h-9 rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                  <option value="step-up">Step-Up EMI</option>
+                  <option value="moratorium-step-up">Moratorium + Step-Up</option>
+                  <option value="revenue-linked">Revenue-Linked EMI</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label className="text-xs text-muted-foreground block mb-2">Minimum Eligibility Criteria</label>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs text-foreground w-36 shrink-0">Min DSCR</span>
+                    <input type="number" step="0.1" value={minDSCR} onChange={(e) => { setMinDSCR(e.target.value); setBidSubmitted(false); }}
+                      className="flex-1 h-9 rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" />
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs text-foreground w-36 shrink-0">Min Stability Index</span>
+                    <input type="number" value={minStability} onChange={(e) => { setMinStability(e.target.value); setBidSubmitted(false); }}
+                      className="flex-1 h-9 rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" />
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs text-foreground w-36 shrink-0">Min Compliance Score</span>
+                    <input type="number" value={minCompliance} onChange={(e) => { setMinCompliance(e.target.value); setBidSubmitted(false); }}
+                      className="flex-1 h-9 rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex gap-3 pt-2">
+                <button onClick={() => setBidSubmitted(true)}
+                  className="flex-1 bg-primary text-primary-foreground py-2.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+                  Submit Cohort Bid
+                </button>
+                <button className="flex-1 border border-border text-foreground py-2.5 rounded-lg text-sm font-medium hover:bg-secondary transition-colors">
+                  Save Draft
+                </button>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        {/* ALLOCATION OUTPUT (shown after bid submission) */}
+        {bidSubmitted && (
+          <Section title="Allocation Engine Output">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
+              <StatBlock label="Capital Committed" value={`₹${capitalCommitment} Cr`} />
+              <StatBlock label="SMEs Eligible" value={`${eligibleSMEs.length}`} />
+              <StatBlock label="SMEs Funded" value={`${fundedSMEs.length}`} />
+              <StatBlock label="Unallocated" value={`₹${remaining.toFixed(0)}L`} />
+            </div>
+
+            {/* Allocation bar */}
+            <div className="mb-4">
+              <p className="text-xs text-muted-foreground mb-2">Capital Allocation</p>
+              <div className="flex h-8 rounded-lg overflow-hidden border border-border">
+                <div className="bg-primary/70 flex items-center justify-center text-[10px] font-medium text-primary-foreground"
+                  style={{ width: `${(allocated / (totalDemand || 1)) * 100}%` }}>
+                  Allocated ₹{allocated.toFixed(0)}L
+                </div>
+                {totalDemand > allocated && (
+                  <div className="bg-destructive/15 flex items-center justify-center text-[10px] font-medium text-destructive"
+                    style={{ width: `${((totalDemand - allocated) / totalDemand) * 100}%` }}>
+                    Unmet ₹{(totalDemand - allocated).toFixed(0)}L
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <StatBlock label="Weighted Yield" value={`${weightedYield}%`} />
+              <StatBlock label="Expected IRR" value={`${expectedIRR}%`} />
+            </div>
+          </Section>
+        )}
 
         {/* SECTION 6 — SME List */}
         <Section title="SME Drill-Down">
