@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { TrendingUp, Users, IndianRupee, BarChart3, Calendar, Shield, Activity } from "lucide-react";
@@ -17,6 +18,7 @@ const heatmapData = [
 ];
 
 const PartnerDashboard = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -90,7 +92,7 @@ const PartnerDashboard = () => {
         </div>
 
         <button
-          onClick={() => window.location.href = "/partner/cohorts"}
+          onClick={() => navigate("/partner/cohorts")}
           className="bg-primary text-primary-foreground px-6 py-2.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity"
         >
           View Cohorts

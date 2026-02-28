@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "@/components/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
@@ -92,6 +92,7 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 );
 
 const CohortCreditDashboard = () => {
+  const navigate = useNavigate();
   const [capitalCommitment, setCapitalCommitment] = useState("3.5");
   const [bandARate, setBandARate] = useState("13.5");
   const [bandBRate, setBandBRate] = useState("15.0");
@@ -427,7 +428,7 @@ const CohortCreditDashboard = () => {
             </div>
 
             <div className="flex justify-end mt-4">
-              <button onClick={() => window.location.href = "/partner/bids"}
+              <button onClick={() => navigate("/partner/bids")}
                 className="border border-border text-foreground px-5 py-2 rounded-lg text-sm font-medium hover:bg-secondary transition-colors">
                 Close
               </button>
