@@ -17,7 +17,7 @@ const AuthPage = () => {
     e.preventDefault();
     login(role, email || (role === "member" ? "member@demo.com" : "partner@demo.com"));
     if (role === "member") {
-      navigate("/member/dashboard");
+      navigate("/member/profile");
     } else {
       navigate("/partner/dashboard");
     }
